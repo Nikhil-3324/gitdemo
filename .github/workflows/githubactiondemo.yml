@@ -24,10 +24,8 @@ jobs:
           distribution: 'temurin'
           java-version: ${{ env.JAVA_VERSION }}
 
-      - name: Set up Maven
-        uses: s4u/setup-maven-action@v1
-        with:
-          maven-version: ${{ env.MVN_VERSION }}
+      - name: Install Maven
+        run: sudo apt-get install -y maven
 
       - name: Build Artifact
         run: mvn clean package -B -DskipTests
@@ -54,4 +52,4 @@ jobs:
         run: |
           envsubst < deployment.yaml | oc apply -f -
           oc rollout status deployment/entportal-${{ secrets.SERVICE_NAME }}
-          echo "Deployment Successful in dev1"
+          echo "Deployment Successful in dev"

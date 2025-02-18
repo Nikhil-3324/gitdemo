@@ -55,4 +55,4 @@ jobs:
         run: |
           envsubst < deployment.yaml | oc apply -f -
           oc rollout status deployment/entportal-${{ secrets.SERVICE_NAME }}
-          echo "Deployment Successful in dev"
+          echo "Deployment Successful in dev1"
